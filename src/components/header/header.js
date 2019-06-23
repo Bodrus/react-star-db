@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './header.css';
 
 const Header = () => {
@@ -6,22 +7,22 @@ const Header = () => {
     <div className="header d-flex">
       <h3>
         <a href="#">
-          Star DB
+          StarDB
         </a>
       </h3>
-      <ul>
+      <ul className="d-flex">
         <li>
           <a href="#">People</a>
         </li>
         <li>
-          <a href="#">Planet</a>
+          <a href="#">Planets</a>
         </li>
         <li>
           <a href="#">Starships</a>
-        </li>  
+        </li>
       </ul>
     </div>
   );
-}
+};
 
 export default Header;
