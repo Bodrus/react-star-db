@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 
 import SwapiService from '../../services/swapi-service';
@@ -36,14 +37,14 @@ export default class RandomPlanet extends Component {
     this.setState({ 
       error: true, 
       loading: false 
-     });
+    });
   }
   
   updatePlanet = () => {
     const id = Math.floor(Math.random() * 17) + 1;
     this.swapiService.getPlanet(id)
-    .then((planet) => this.onPlanetLoaded(planet))
-    .catch(this.onError);
+      .then((planet) => this.onPlanetLoaded(planet))
+      .catch(this.onError);
   }
   
   render() {
@@ -57,9 +58,9 @@ export default class RandomPlanet extends Component {
     
     return (
       <div className="random-planet jumbotron rounded">
-       {spiner}
-       {content}
-       {errorIndicator}
+        {spiner}
+        {content}
+        {errorIndicator}
       </div>
     );
   }
@@ -77,8 +78,8 @@ const PlanetView = ({ planet }) => {
   return (
     <>
       <img className="planet-image"
-         src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} 
-         alt="" />
+        src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} 
+        alt="" />
       <div>
         <h4>{name}</h4>
         <ul className="list-group list-group-flush">

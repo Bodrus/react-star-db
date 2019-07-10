@@ -1,44 +1,47 @@
-/* eslint-disable no-debugger */
-/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-unused-vars */
+
 import React, { Component } from 'react';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
-import ErrorIndicator from '../error-indicator';
-
+import ItemDetails from '../item-details';
+import ErrorBoundry from '../error-boundry';
+import SwapiServece from '../../services/swapi-service';
+import Row from '../row';
 import './people-page.css';
 
 
 export default class PeoplePage extends Component {
   
+  swapiService = new SwapiServece();
+  
   state = {
-  	selectedPerson: null,
-    onError: false
+    selectedPerson: null,
   }
   
   onPersonSelected = (id) => {
-  	this.setState({ selectedPerson: id });
+    this.setState({ selectedPerson: id });
   }
-  
-  componentDidCatch(error, info) {
-    debugger; 
-    this.setState({ onError: true });
-  }
-  
+
   render() {
-    if (this.state.onError) {
-      return <ErrorIndicator />;
-    }
+
+    const itemList = (
+      <ItemList 
+        onItemSelected={this.onPersonSelected}
+        getData={this.swapiService.getAllPeople}> 
+        
+        {(i) => `${i.name} ${i.birthYear}`}   
+      </ItemList>        
+    );
     
-  	return (
-  		<div className="row mb2 people-page">
-  			<div className="col-md-6">
-  				<ItemList onItemSelected={this.onPersonSelected}/>
-  			</div>
-  			<div className="col-md-6">
-  				<PersonDetails personId={this.state.selectedPerson}/>  
-  			</div>     
-  		</div>
-  	);
+    const personalDetails = (
+      <ErrorBoundry>
+        <ItemDetails itemId={this.state.selectedPerson}/>        
+      </ErrorBoundry>
+    );
+    
+    return (
+      <ErrorBoundry>
+        <Row left={itemList} right={personalDetails}/>
+      </ErrorBoundry>
+    );
   }
 }
