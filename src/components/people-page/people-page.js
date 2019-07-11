@@ -6,6 +6,14 @@ import ItemDetails from '../item-details';
 import ErrorBoundry from '../error-boundry';
 import SwapiServece from '../../services/swapi-service';
 import Row from '../row';
+import {
+  PersonDetals,
+  PlanetDetals,
+  StarshipDetals,
+  PersonList,
+  PlanetList,
+  StarshipList
+} from '../sw-components';
 import './people-page.css';
 
 
@@ -24,12 +32,22 @@ export default class PeoplePage extends Component {
   render() {
 
     const itemList = (
-      <ItemList 
-        onItemSelected={this.onPersonSelected}
-        getData={this.swapiService.getAllPeople}> 
-        
+     <>
+      <PersonList 
+        onItemSelected={this.onPersonSelected}>  
         {(i) => `${i.name} ${i.birthYear}`}   
-      </ItemList>        
+      </PersonList> 
+      
+      <StarshipList 
+        onItemSelected={this.onPersonSelected}>  
+        {(i) => `${i.name} ${i.birthYear}`}   
+      </StarshipList>
+      
+      <PlanetList 
+        onItemSelected={this.onPersonSelected}>  
+        {(i) => `${i.name} ${i.birthYear}`}   
+      </PlanetList> 
+     </>   
     );
     
     const personalDetails = (

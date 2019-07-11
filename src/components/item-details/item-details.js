@@ -63,8 +63,7 @@ export default class ItemDetails extends Component {
   		return <span>Select a item from a list</span>;
   	}
 		
-    const { id, name, gender,
-      birthYear, eyeColor, image } = item;
+    const { name, image } = item;
   	
 		
     
