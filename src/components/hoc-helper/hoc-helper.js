@@ -5,33 +5,30 @@ import ErrorIndicator from '../error-indicator';
 
 const withData = (View, getData) => {
   return class extends Component {
-    
     state = {
       data: [],
       error: false,
       loading: true
-    }
+    };
 
     onError = () => {
-      this.setState({ 
+      this.setState({
         error: true,
         loading: false
       });
-    }
-    
+    };
+
     componentDidMount() {
-      
       getData()
-        .then((data) => 
-          this.setState({ data, loading: false }))
+        .then(data => this.setState({ data, loading: false }))
         .catch(this.onError);
     }
-    
+
     render() {
       const { data, loading, error } = this.state;
       const errorIndicator = error ? <ErrorIndicator /> : null;
       const loader = loading ? <Spiner /> : null;
-      
+
       return (
         <>
           {errorIndicator}

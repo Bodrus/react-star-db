@@ -1,4 +1,3 @@
-
 @keyframes lds-spinner {
   0% {
     opacity: 1;
@@ -16,7 +15,7 @@
   }
 }
 .lds-spinner {
- margin: 0 auto;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
 }
@@ -108,11 +107,13 @@
 .lds-spinner {
   width: 100%;
   height: 100%;
-  -webkit-transform: translate(-58.5px, -58.5px) scale(0.585) translate(58.5px, 58.5px);
+  -webkit-transform: translate(-58.5px, -58.5px) scale(0.585)
+    translate(58.5px, 58.5px);
   transform: translate(-58.5px, -58.5px) scale(0.585) translate(58.5px, 58.5px);
 }
 
-.lds-css, .ng-scope {
+.lds-css,
+.ng-scope {
   position: relative;
   width: 150px;
   height: 150px;

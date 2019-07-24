@@ -2,60 +2,56 @@
 import React from 'react';
 import ItemDetails, { Record } from '../item-details';
 import SwapiService from '../../services/swapi-service';
+import { SwapiServiceConsumer } from '../swapi-service-context';
 
-
-const swapiService = new SwapiService();
-
-const {
-  getPerson,
-  getPlanet,
-  getStarship
-} = swapiService;
-
-const PersonDetals = ({itemId}) => {
+const PersonDetals = ({ itemId }) => {
   return (
-    <ItemDetails 
-      itemId={itemId}
-      getData={getPerson}>
-      {/* для работы Record ему нужно передать обьект item, который генериреться
-      в Itemlist, для этого я копирую Record и добовляю ему свойство item  */}
-      <Record field="gender" label="Gender" />
-      <Record field="eyeColor" label="Eye Color" />    
-    </ItemDetails>
+    <SwapiServiceConsumer>
+      {({ getPerson }) => {
+        return (
+          <ItemDetails itemId={itemId} getData={getPerson}>
+            {/* для работы Record ему нужно передать обьект item, который генериреться
+        в Itemlist, для этого я копирую Record и добовляю ему свойство item  */}
+            <Record field="gender" label="Gender" />
+            <Record field="eyeColor" label="Eye Color" />
+          </ItemDetails>
+        );
+      }}
+    </SwapiServiceConsumer>
   );
 };
 
-const PlanetDetals = ({itemId}) => {
+const PlanetDetals = ({ itemId }) => {
   return (
-    <ItemDetails 
-      itemId={itemId} 
-      getData={getPlanet}>
-      
-      <Record field="population" label="Population" />
-      <Record field="rotationPeriod" label="rotation Period" />
-      <Record field="diameter" label="Diameter" />
-       
-    </ItemDetails>
+    <SwapiServiceConsumer>
+      {({ getPlanet }) => {
+        return (
+          <ItemDetails itemId={itemId} getData={getPlanet}>
+            <Record field="population" label="Population" />
+            <Record field="rotationPeriod" label="rotation Period" />
+            <Record field="diameter" label="Diameter" />
+          </ItemDetails>
+        );
+      }}
+    </SwapiServiceConsumer>
   );
 };
 
-const StarshipDetals = ({itemId}) => {
+const StarshipDetals = ({ itemId }) => {
   return (
-    <ItemDetails 
-      itemId={itemId} 
-      getData={getStarship}>
-      
-      <Record field="model" label="Model" />
-      <Record field="length" label="Length" />
-      <Record field="costInCredits" label="Cost" />
-      <Record field="passengers" label="Passengers" />
-       
-    </ItemDetails>
+    <SwapiServiceConsumer>
+      {({ getStarship }) => {
+        return (
+          <ItemDetails itemId={itemId} getData={getStarship}>
+            <Record field="model" label="Model" />
+            <Record field="length" label="Length" />
+            <Record field="costInCredits" label="Cost" />
+            <Record field="passengers" label="Passengers" />
+          </ItemDetails>
+        );
+      }}
+    </SwapiServiceConsumer>
   );
 };
 
-export {
-  PersonDetals,
-  PlanetDetals,
-  StarshipDetals
-};
+export { PersonDetals, PlanetDetals, StarshipDetals };

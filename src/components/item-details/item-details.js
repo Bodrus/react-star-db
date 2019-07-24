@@ -22,8 +22,7 @@ const Record = ({ item, field, label }) => {
 export { Record };
 
 export default class ItemDetails extends Component {
-  
-  //  swapiService = new SwapiService;
+
   
   componentDidMount() {
   	this.updateitem(); 
@@ -64,10 +63,7 @@ export default class ItemDetails extends Component {
   	}
 		
     const { name, image } = item;
-  	
-		
-    
-            
+  	       
   	const data = (
   		<div className="item-details card">
   			<img className="item-image"

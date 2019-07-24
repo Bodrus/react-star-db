@@ -14,51 +14,35 @@ import {
   PlanetList,
   StarshipList
 } from '../sw-components';
+
 import './people-page.css';
 
-
 export default class PeoplePage extends Component {
-  
   swapiService = new SwapiServece();
-  
+
   state = {
-    selectedPerson: null,
-  }
-  
-  onPersonSelected = (id) => {
-    this.setState({ selectedPerson: id });
-  }
+    selectedPerson: null
+  };
+
+  onPersonSelected = id => {
+    this.setState({ selectedPerson: id + 1 });
+  };
 
   render() {
-
     const itemList = (
-     <>
-      <PersonList 
-        onItemSelected={this.onPersonSelected}>  
-        {(i) => `${i.name} ${i.birthYear}`}   
-      </PersonList> 
-      
-      <StarshipList 
-        onItemSelected={this.onPersonSelected}>  
-        {(i) => `${i.name} ${i.birthYear}`}   
-      </StarshipList>
-      
-      <PlanetList 
-        onItemSelected={this.onPersonSelected}>  
-        {(i) => `${i.name} ${i.birthYear}`}   
-      </PlanetList> 
-     </>   
+      <>
+        <PersonList onItemSelected={this.onPersonSelected} />
+
+        <StarshipList onItemSelected={this.onPersonSelected} />
+      </>
     );
-    
-    const personalDetails = (
-      <ErrorBoundry>
-        <ItemDetails itemId={this.state.selectedPerson}/>        
-      </ErrorBoundry>
-    );
-    
+
     return (
       <ErrorBoundry>
-        <Row left={itemList} right={personalDetails}/>
+        <Row
+          left={itemList}
+          right={<PersonDetals itemId={this.state.selectedPerson} />}
+        />
       </ErrorBoundry>
     );
   }
