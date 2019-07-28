@@ -47,8 +47,6 @@ const withData = View => {
 
     render() {
       const { data, loading, error } = this.state;
-      const errorIndicator = error ? <ErrorIndicator /> : null;
-      const loader = loading ? <Spiner /> : null;
 
       if (loading) {
         return <Spiner />;

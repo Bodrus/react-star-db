@@ -8,7 +8,6 @@ export default class StarshipsPage extends Component {
   };
 
   onItemSelected = selectedItem => {
-    console.log(selectedItem);
     this.setState({ selectedItem });
   };
 
