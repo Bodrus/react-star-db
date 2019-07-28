@@ -14,35 +14,41 @@ export default class SwapiService {
 
   getAllPeople = async () => {
     const res = await this.getResource('/people/');
-    return res.results.map(this._transformPerson);
+    return res.results.map(this._transformPerson).slice(0, 6);
   };
 
   getPerson = async id => {
     const person = await this.getResource(`/people/${id}/`);
-    return this._transformPerson(person, id);
+    return this._transformPerson(person);
   };
 
   getAllPlanets = async () => {
     const res = await this.getResource('/planets/');
-    return res.results.map(this._transformPlanet);
+    return res.results.map(this._transformPlanet).slice(0, 6);
   };
 
   getPlanet = async id => {
     const planet = await this.getResource(`/planets/${id}/`);
-    return this._transformPlanet(planet, id);
+    return this._transformPlanet(planet);
   };
 
   getAllStarships = async () => {
     const res = await this.getResource('/starships/');
-    return res.results.map(this._transformStarship);
+    return res.results.map(this._transformStarship).slice(0, 6);
   };
 
   getStarship = async id => {
     const starship = await this.getResource(`/starships/${id}/`);
-    return this._transformStarship(starship, id);
+    return this._transformStarship(starship);
   };
 
-  _transformPlanet = (planet, id) => {
+  _extractId = item => {
+    const idRegExp = /\/([0-9]*)\/$/;
+    return item.url.match(idRegExp)[1];
+  };
+
+  _transformPlanet = planet => {
+    const id = this._extractId(planet);
     return {
       id,
       image: `${this._imgBase}/planets/${id}.jpg`,
@@ -53,7 +59,8 @@ export default class SwapiService {
     };
   };
 
-  _transformStarship = (starship, id) => {
+  _transformStarship = starship => {
+    const id = this._extractId(starship);
     return {
       id,
       image: `${this._imgBase}/starships/${id}.jpg`,
@@ -68,7 +75,8 @@ export default class SwapiService {
     };
   };
 
-  _transformPerson = (person, id) => {
+  _transformPerson = person => {
+    const id = this._extractId(person);
     return {
       id,
       image: `${this._imgBase}/characters/${id}.jpg`,
