@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-star-db/static/css/main.49b309cb.chunk.css",
+    "main.js": "/react-star-db/static/js/main.e0690f49.chunk.js",
+    "main.js.map": "/react-star-db/static/js/main.e0690f49.chunk.js.map",
+    "runtime~main.js": "/react-star-db/static/js/runtime~main.8a36864f.js",
+    "runtime~main.js.map": "/react-star-db/static/js/runtime~main.8a36864f.js.map",
+    "static/js/2.d0a9b356.chunk.js": "/react-star-db/static/js/2.d0a9b356.chunk.js",
+    "static/js/2.d0a9b356.chunk.js.map": "/react-star-db/static/js/2.d0a9b356.chunk.js.map",
+    "index.html": "/react-star-db/index.html",
+    "precache-manifest.d7bff6ea5d5be25dfe7990023039d575.js": "/react-star-db/precache-manifest.d7bff6ea5d5be25dfe7990023039d575.js",
+    "service-worker.js": "/react-star-db/service-worker.js",
+    "static/css/main.49b309cb.chunk.css.map": "/react-star-db/static/css/main.49b309cb.chunk.css.map",
+    "static/media/error.png": "/react-star-db/static/media/error.25b5e3e1.png"
+  }
+}
