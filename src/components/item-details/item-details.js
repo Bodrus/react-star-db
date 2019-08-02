@@ -62,7 +62,7 @@ export default class ItemDetails extends Component {
 
     const data = (
       <div className="item-details card">
-        <img className="item-image" src={image} />
+        <img className="item-image" src={image} alt="hh" />
 
         <div className="card-body">
           <h4>{name}</h4>
