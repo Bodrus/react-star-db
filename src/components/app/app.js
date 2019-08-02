@@ -42,10 +42,11 @@ export default class App extends React.Component {
     return (
       <SwapiServiceProvider value={this.state.swapiService}>
         <Router>
-          <div>
+          <div className="stardb-app">
             <Header onServiceChange={this.onServiceChange} />
             <RandomPlanet />
 
+            <Route path="/" render={() => <h2>Welkome to StarDB</h2>} exact />
             <Route path="/people" component={PeoplePage} />
             <Route path="/planets" component={PlanetsPage} />
             <Route path="/starships" component={StarshipsPage} />
